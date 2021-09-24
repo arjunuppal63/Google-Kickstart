@@ -1,0 +1,40 @@
+Python 3.7
+#Code
+
+T=int(input())
+la=[]
+for m in range(T):
+    N=int(input())
+    S=str(input())
+    
+    li=[]
+    for i in range(N):
+        item=int(S[i])
+        if(item==1):
+            li.append(i+1)
+    count=0
+    for a in range(len(li)-1):
+        l=li[a]
+        r=li[a+1]
+        items=r-l-1
+        if(items==0):
+            continue
+        if(items%2==0):
+            n=items//2
+            count+=(n*(n+1))
+        if(items%2!=0):
+            n=items//2
+            count+=((n+1)**2)
+    if(li[0]!=1):
+        left_items=li[0]-1
+        n=left_items
+        count+=((n*(n+1))//2)
+    if(li[-1]==N):
+        la.append(count)
+    else:
+        left_items=N-li[-1]
+        n=left_items
+        count+=((n*(n+1))//2)
+        la.append(count)
+for i in range(len(la)):
+    print("Case #"+str(i+1)+": "+str(la[i])) 
